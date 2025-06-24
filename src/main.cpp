@@ -1,10 +1,14 @@
 #include <iostream>
 
+#include "interaction.hpp"
 #include "reminder.hpp"
 
 int main(int argc, char** argv) {
 	try {
-		Reminder reminder(argc, argv);
+		InteractionTerminal interTerm;
+		Reminder reminder(&interTerm);
+
+		reminder.Run(argc, argv);
 		reminder.CheckTodayNotify();
 		if (reminder.ChoiceAction()) {
 			reminder.PrintList();
